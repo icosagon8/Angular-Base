@@ -27,4 +27,8 @@ export class CourseListComponent {
     onRemoveCourse(id: CourseModel['id']): void {
         this.removeCourse.emit(id);
     }
+
+    trackByFn(index: number, item: CourseModel): number {
+        return item.id;
+    }
 }
