@@ -1,7 +1,7 @@
 <app-header>
     <div class="account">
         <span>Dave</span>
-        <button common-button class="btn-logout" text="Logout" iconName="pen"></button>
+        <button common-button class="btn-logout" text="Logout"></button>
     </div>
 </app-header>
 
@@ -12,3 +12,5 @@
 >
     <button common-button class="btn-add-course" text="Add new course"></button>
 </app-info>
+
+<app-course-list [courses]="courses" [editable]="true"></app-course-list>

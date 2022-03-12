@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FaConfig } from '@fortawesome/angular-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
@@ -10,4 +11,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 export class ButtonComponent {
     @Input() text?: string;
     @Input() iconName?: IconProp;
+
+    constructor(faConfig: FaConfig) {
+        faConfig.fixedWidth = true;
+    }
 }
