@@ -1,16 +1,22 @@
 <app-header>
     <div class="account">
         <span>Dave</span>
-        <button common-button class="btn-logout" text="Logout"></button>
+        <button
+            common-button
+            class="btn-logout"
+            text="Logout"
+            (click)="openModal()"
+        ></button>
     </div>
 </app-header>
 
-<app-info
-    class="info"
-    title="Your list is empty"
-    text="Please use the 'Add new course' button to add your first course"
->
-    <button common-button class="btn-add-course" text="Add new course"></button>
-</app-info>
-
 <app-course-list [courses]="courses" [editable]="true"></app-course-list>
+
+<app-confirmation-dialog
+    *ngIf="showModal"
+    title="Are you sure?"
+    message="Are you sure you want to log out?"
+    okButtonText="Yes"
+    cancelButtonText="No"
+    (close)="closeModal()"
+></app-confirmation-dialog>

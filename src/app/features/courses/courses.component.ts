@@ -12,4 +12,13 @@ import { CourseModel } from './models/course.model';
 })
 export class CoursesComponent {
     courses: CourseModel[] = COURSES;
+    showModal: boolean = false;
+
+    openModal(): void {
+        this.showModal = true;
+    }
+
+    closeModal(): void {
+        this.showModal = false;
+    }
 }
