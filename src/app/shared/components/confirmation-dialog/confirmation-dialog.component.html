@@ -1,0 +1,20 @@
+<div class="dialog-overlay">
+    <div class="dialog">
+        <button
+            common-button
+            class="btn-close"
+            iconName="window-close"
+            (click)="onClose()"
+        ></button>
+        <app-info class="info" [title]="title" [text]="message">
+            <div class="btn-container">
+                <button common-button [text]="okButtonText" (click)="onClose()"></button>
+                <button
+                    common-button
+                    [text]="cancelButtonText"
+                    (click)="onClose()"
+                ></button>
+            </div>
+        </app-info>
+    </div>
+</div>
