@@ -1,0 +1,83 @@
+@import "src/theme/core-variables";
+@import "src/theme/controls";
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+
+    .form-group {
+        padding-top: 15px;
+    }
+}
+
+.form-wrapper {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.title {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-registration {
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+.text {
+    text-align: center;
+}
+
+.description {
+    height: 210px;
+
+    textarea {
+        height: 150px;
+        resize: none;
+    }
+}
+
+.btn-create-author {
+    display: block;
+    margin: 0 auto;
+}
+
+.authors {
+    display: flex;
+    gap: 80px;
+    border: 1px solid $gray;
+
+    &-form {
+        flex: 2 0 0;
+    }
+
+    &-list {
+        flex: 1 0 0;
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.author {
+    margin-bottom: 10px;
+}
