@@ -18,15 +18,16 @@ import {
     ],
 })
 export class EmailValidatorDirective implements Validator {
-    @Input('appEmailValidator') emailRe: RegExp = /^(.+)@(.+)$/;
+    @Input('appEmailValidator') emailPattern = '';
 
     validate(control: AbstractControl): ValidationErrors | null {
-        return emailValidator(this.emailRe)(control);
+        return emailValidator(this.emailPattern)(control);
     }
 }
 
-export function emailValidator(emailRe: RegExp): ValidatorFn {
+export function emailValidator(emailPattern: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
+        const emailRe = new RegExp(emailPattern, 'i');
         const forbidden = !emailRe.test(control.value);
 
         return forbidden ? { forbiddenEmail: { value: control.value } } : null;
