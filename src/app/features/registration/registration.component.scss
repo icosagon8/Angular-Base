@@ -1,0 +1,25 @@
+@import "src/theme/core-variables";
+@import "src/theme/controls";
+
+.form-wrapper {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+}
+
+.btn-registration {
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+
+    &:disabled {
+        color: #000000;
+    }
+}
+
+.text {
+    text-align: center;
+}

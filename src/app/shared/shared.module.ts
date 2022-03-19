@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     ButtonComponent,
     ConfirmationDialogComponent,
@@ -24,10 +24,11 @@ const DIRECTIVES = [EmailValidatorDirective];
 
 @NgModule({
     declarations: [...COMPONENTS, ...PIPES, ...DIRECTIVES],
-    imports: [CommonModule, FormsModule, FortAwesomeModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, FortAwesomeModule],
     exports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         FortAwesomeModule,
         ...COMPONENTS,
         ...PIPES,
