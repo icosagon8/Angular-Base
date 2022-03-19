@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {
-    ButtonComponent,
-    ConfirmationDialogComponent,
-    HeaderComponent,
-    InfoComponent,
-    SearchComponent,
+    ButtonComponent, ConfirmationDialogComponent, HeaderComponent, InfoComponent, SearchComponent
 } from './components';
 import { EmailValidatorDirective } from './directives';
 import { FortAwesomeModule } from './fort-awesome/fort-awesome.module';
