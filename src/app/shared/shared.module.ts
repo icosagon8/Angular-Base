@@ -7,7 +7,7 @@ import {
 } from './components';
 import { AnyWordCharacterValidatorDirective, EmailValidatorDirective } from './directives';
 import { FortAwesomeModule } from './fort-awesome/fort-awesome.module';
-import { DurationPipe } from './pipes';
+import { CreationDatePipe, DurationPipe, StringJoinerPipe } from './pipes';
 
 const COMPONENTS = [
     HeaderComponent,
@@ -16,7 +16,7 @@ const COMPONENTS = [
     SearchComponent,
     ConfirmationDialogComponent,
 ];
-const PIPES = [DurationPipe];
+const PIPES = [DurationPipe, CreationDatePipe, StringJoinerPipe];
 const DIRECTIVES = [EmailValidatorDirective, AnyWordCharacterValidatorDirective];
 
 @NgModule({

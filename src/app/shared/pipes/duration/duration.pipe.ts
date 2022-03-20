@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+import { padStartZero } from '../../utils';
+
 @Pipe({
     name: 'duration',
 })
@@ -9,13 +11,9 @@ export class DurationPipe implements PipeTransform {
         const minutes = value % 60;
         const units = hours < 2 ? 'hour' : 'hours';
 
-        return `${this.padStartZero(hours, maxLength)}:${this.padStartZero(
+        return `${padStartZero(hours, maxLength)}:${padStartZero(
             minutes,
             maxLength,
         )} ${units}`;
-    }
-
-    private padStartZero(value: number, maxLength: number): string {
-        return String(value).padStart(maxLength, '0');
     }
 }
