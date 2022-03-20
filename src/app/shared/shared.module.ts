@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
     ButtonComponent, ConfirmationDialogComponent, HeaderComponent, InfoComponent, SearchComponent
 } from './components';
+import {
+    AnyWordCharacterValidatorDirective, EmailValidatorDirective, ShowPasswordDirective
+} from './directives';
 import { FortAwesomeModule } from './fort-awesome/fort-awesome.module';
-import { DurationPipe } from './pipes';
+import { CreationDatePipe, DurationPipe, StringJoinerPipe } from './pipes';
 
 const COMPONENTS = [
     HeaderComponent,
@@ -14,11 +18,24 @@ const COMPONENTS = [
     SearchComponent,
     ConfirmationDialogComponent,
 ];
-const PIPES = [DurationPipe];
+const PIPES = [DurationPipe, CreationDatePipe, StringJoinerPipe];
+const DIRECTIVES = [
+    EmailValidatorDirective,
+    AnyWordCharacterValidatorDirective,
+    ShowPasswordDirective,
+];
 
 @NgModule({
-    declarations: [...COMPONENTS, ...PIPES],
-    imports: [CommonModule, FortAwesomeModule],
-    exports: [CommonModule, FortAwesomeModule, ...COMPONENTS, ...PIPES],
+    declarations: [...COMPONENTS, ...PIPES, ...DIRECTIVES],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, FortAwesomeModule],
+    exports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        FortAwesomeModule,
+        ...COMPONENTS,
+        ...PIPES,
+        ...DIRECTIVES,
+    ],
 })
 export class SharedModule {}

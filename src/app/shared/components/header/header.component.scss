@@ -1,6 +1,8 @@
+@import "src/theme/core-variables";
+
 :host {
     padding: 10px;
-    border: 1px solid #e3800b;
+    border: 1px solid $light_red;
     display: flex;
     justify-content: space-between;
     align-items: center;

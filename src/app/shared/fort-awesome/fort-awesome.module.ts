@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPen, faTrash, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import {
+    faEye, faEyeSlash, faPen, faTrash, faWindowClose
+} from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
     declarations: [],
@@ -9,6 +11,6 @@ import { faPen, faTrash, faWindowClose } from '@fortawesome/free-solid-svg-icons
 })
 export class FortAwesomeModule {
     constructor(library: FaIconLibrary) {
-        library.addIcons(faPen, faTrash, faWindowClose);
+        library.addIcons(faPen, faTrash, faWindowClose, faEye, faEyeSlash);
     }
 }

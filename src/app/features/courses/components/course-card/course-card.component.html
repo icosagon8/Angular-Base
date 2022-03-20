@@ -3,8 +3,8 @@
     <p>{{ course.description }}</p>
 </div>
 <div class="info">
-    <p><span>Authors: </span>{{ course.authors.join(", ") }}</p>
+    <p><span>Authors: </span>{{ course.authors | stringJoiner: ", " }}</p>
     <p><span>Duration: </span> {{ course.duration | duration: 2 }}</p>
-    <p><span>Created: </span> {{ course.creationDate | date: "dd.MM.yyyy" }}</p>
+    <p><span>Created: </span> {{ course.creationDate | creationDate }}</p>
     <ng-content></ng-content>
 </div>

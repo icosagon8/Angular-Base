@@ -1,0 +1,50 @@
+.form-group {
+    min-height: 90px;
+    flex-grow: 1;
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 5px;
+        outline: none;
+        box-sizing: border-box;
+
+        &.ng-invalid {
+            &.ng-touched,
+            &.ng-dirty {
+                border-color: $danger;
+            }
+        }
+    }
+
+    input {
+        border: 1px solid $orange;
+    }
+
+    textarea {
+        border: 1px solid $sand_color;
+    }
+
+    .alert {
+        color: $danger;
+        user-select: none;
+    }
+
+    .password {
+        position: relative;
+
+        &-icon {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    }
+}

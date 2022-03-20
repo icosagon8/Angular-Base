@@ -1,0 +1,113 @@
+<form [formGroup]="courseform" (ngSubmit)="onSubmit()">
+    <div class="form-header">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input
+                id="title"
+                type="text"
+                name="title"
+                autocomplete="off"
+                formControlName="title"
+            />
+            <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert">
+                <div *ngIf="title?.hasError('required')">Title is required.</div>
+            </div>
+        </div>
+        <button
+            common-button
+            type="submit"
+            text="Create course"
+            [disabled]="!courseform.valid"
+        ></button>
+    </div>
+    <div class="form-group description">
+        <label for="description">Description</label>
+        <textarea
+            id="description"
+            name="description"
+            formControlName="description"
+        ></textarea>
+        <div
+            *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+            class="alert"
+        >
+            <div *ngIf="description?.hasError('required')">Description is required.</div>
+        </div>
+    </div>
+    <fieldset class="authors">
+        <div class="authors-form">
+            <div class="author">
+                <span class="title">Add authors</span>
+                <div class="form-group">
+                    <label for="author">Author name</label>
+                    <input
+                        id="author"
+                        type="text"
+                        name="author"
+                        autocomplete="off"
+                        [formControl]="newAuthor"
+                    />
+                    <div
+                        *ngIf="
+                            newAuthor.invalid && (newAuthor?.dirty || newAuthor?.touched)
+                        "
+                        class="alert"
+                    >
+                        <div *ngIf="newAuthor.hasError('forbiddenText')">
+                            Use only word characters.
+                        </div>
+                    </div>
+                </div>
+                <button
+                    common-button
+                    type="button"
+                    text="Create author"
+                    class="btn-create-author"
+                    (click)="onAddAuthor()"
+                    [disabled]="!newAuthor?.valid"
+                ></button>
+            </div>
+            <div class="duration">
+                <span class="title">Duration</span>
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <input
+                        id="duration"
+                        type="number"
+                        name="duration"
+                        autocomplete="off"
+                        formControlName="duration"
+                    />
+                    <div
+                        *ngIf="
+                            duration?.invalid && (duration?.dirty || duration?.touched)
+                        "
+                        class="alert"
+                    >
+                        <div *ngIf="duration?.hasError('required')">
+                            Duration is required.
+                        </div>
+                        <div *ngIf="duration?.hasError('min')">
+                            Duration should be not less than 0.
+                        </div>
+                    </div>
+                </div>
+                <p>Duration: {{ duration?.value | duration: 2 }}</p>
+            </div>
+        </div>
+        <div class="authors-list">
+            <span class="title">Authors list</span>
+            <ul>
+                <li *ngFor="let author of authors.controls; index as i">
+                    <span>{{ author.value }}</span>
+                    <button
+                        common-button
+                        type="button"
+                        text="Delete author"
+                        (click)="onRemoveAuthor(i)"
+                    ></button>
+                </li>
+            </ul>
+        </div>
+    </fieldset>
+</form>

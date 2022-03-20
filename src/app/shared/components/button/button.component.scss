@@ -1,9 +1,12 @@
+@import "src/theme/core-variables";
+
 :host {
     padding: 5px;
-    border: 2px solid #a758ef;
+    border: 2px solid $purple;
     background-color: #ffffff;
     cursor: pointer;
     outline: none;
+    user-select: none;
 
     &:hover {
         background-color: #eecbee;
@@ -13,6 +16,10 @@
     &:focus {
         background-color: #faeafa;
         border-color: #e3800b;
+    }
+
+    &:disabled {
+        color: #000000;
     }
 }
 

@@ -1,0 +1,7 @@
+@import "src/theme/core-variables";
+
+:host {
+    padding: 15px;
+    border: 1px solid $light_blue;
+    display: block;
+}
