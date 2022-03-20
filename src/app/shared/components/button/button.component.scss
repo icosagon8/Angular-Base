@@ -6,6 +6,7 @@
     background-color: #ffffff;
     cursor: pointer;
     outline: none;
+    user-select: none;
 
     &:hover {
         background-color: #eecbee;

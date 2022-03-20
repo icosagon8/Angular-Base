@@ -5,7 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     ButtonComponent, ConfirmationDialogComponent, HeaderComponent, InfoComponent, SearchComponent
 } from './components';
-import { AnyWordCharacterValidatorDirective, EmailValidatorDirective } from './directives';
+import {
+    AnyWordCharacterValidatorDirective, EmailValidatorDirective, ShowPasswordDirective
+} from './directives';
 import { FortAwesomeModule } from './fort-awesome/fort-awesome.module';
 import { CreationDatePipe, DurationPipe, StringJoinerPipe } from './pipes';
 
@@ -17,7 +19,11 @@ const COMPONENTS = [
     ConfirmationDialogComponent,
 ];
 const PIPES = [DurationPipe, CreationDatePipe, StringJoinerPipe];
-const DIRECTIVES = [EmailValidatorDirective, AnyWordCharacterValidatorDirective];
+const DIRECTIVES = [
+    EmailValidatorDirective,
+    AnyWordCharacterValidatorDirective,
+    ShowPasswordDirective,
+];
 
 @NgModule({
     declarations: [...COMPONENTS, ...PIPES, ...DIRECTIVES],

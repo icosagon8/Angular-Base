@@ -10,6 +10,7 @@ import { emailValidator } from 'src/app/shared/directives';
 })
 export class RegistrationComponent implements OnInit {
     form!: FormGroup;
+    showPassword = false;
 
     ngOnInit(): void {
         this.createForm();
@@ -17,6 +18,11 @@ export class RegistrationComponent implements OnInit {
 
     onSubmit() {
         console.log(this.form.value);
+    }
+
+    onToggle(passwordVisibility: any): void {
+        this.showPassword = !this.showPassword;
+        passwordVisibility.toggle();
     }
 
     get name() {

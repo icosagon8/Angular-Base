@@ -34,12 +34,21 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input
-                id="password"
-                type="password"
-                name="password"
-                formControlName="password"
-            />
+            <div class="password">
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    formControlName="password"
+                    appShowPassword
+                    #passwordVisibility="appShowPassword"
+                />
+                <fa-icon
+                    class="password-icon"
+                    [icon]="showPassword ? 'eye-slash' : 'eye'"
+                    (click)="onToggle(passwordVisibility)"
+                ></fa-icon>
+            </div>
             <div
                 *ngIf="password?.invalid && (password?.dirty || password?.touched)"
                 class="alert"

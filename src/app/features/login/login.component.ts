@@ -8,8 +8,14 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
     emailPattern = '^(.+)@(.+)$';
+    showPassword = false;
 
-    onLogin(loginForm: NgForm) {
+    onLogin(loginForm: NgForm): void {
         console.log(loginForm.value);
+    }
+
+    onToggle(passwordVisibility: any): void {
+        this.showPassword = !this.showPassword;
+        passwordVisibility.toggle();
     }
 }
