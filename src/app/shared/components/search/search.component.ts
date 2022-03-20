@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-search',
@@ -6,4 +6,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./search.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchComponent {}
+export class SearchComponent {
+    @Input() placeholder = '';
+
+    @Output() search = new EventEmitter<string>();
+
+    searchText = '';
+
+    onSubmit(): void {
+        console.log(this.searchText);
+
+        this.search.emit(this.searchText);
+    }
+}
