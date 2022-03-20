@@ -16,6 +16,6 @@ export class DurationPipe implements PipeTransform {
     }
 
     private padStartZero(value: number, maxLength: number): string {
-        return String(value % 60).padStart(maxLength, '0');
+        return String(value).padStart(maxLength, '0');
     }
 }
