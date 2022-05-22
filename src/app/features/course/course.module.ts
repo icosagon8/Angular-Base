@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { CourseFormComponent } from './components';
+import { CourseRoutingModule } from './course-routing.module';
 import { CourseComponent } from './course.component';
 
 @NgModule({
-    declarations: [CourseComponent, CourseFormComponent],
-    imports: [SharedModule],
-    exports: [CourseComponent],
+    declarations: [CourseComponent],
+    imports: [SharedModule, CourseRoutingModule],
 })
 export class CourseModule {}
