@@ -18,7 +18,6 @@ export class AuthorsStoreService {
 
     constructor(private authorsService: AuthorsService) {
         this.getAll();
-        console.log(this.authors$$.value);
     }
 
     public addAuthor(author: Author): Observable<Author> {
