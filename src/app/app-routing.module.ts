@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthorizedGuard } from './auth/guards/authorized.guard';
+import { NotAuthorizedGuard } from './auth/guards/not-authorized.guard';
+
 const routes: Routes = [
     {
         path: '',
@@ -11,6 +14,7 @@ const routes: Routes = [
         path: 'login',
         loadChildren: () =>
             import('./features/login/login.module').then((m) => m.LoginModule),
+        canActivate: [NotAuthorizedGuard],
     },
     {
         path: 'registration',
@@ -18,6 +22,7 @@ const routes: Routes = [
             import('./features/registration/registration.module').then(
                 (m) => m.RegistrationModule,
             ),
+        canActivate: [NotAuthorizedGuard],
     },
     {
         path: 'courses/edit/:id',
@@ -25,6 +30,7 @@ const routes: Routes = [
             import('./features/course-form/course-form.module').then(
                 (m) => m.CourseFormModule,
             ),
+        canLoad: [AuthorizedGuard],
     },
     {
         path: 'courses/add',
@@ -32,16 +38,19 @@ const routes: Routes = [
             import('./features/course-form/course-form.module').then(
                 (m) => m.CourseFormModule,
             ),
+        canLoad: [AuthorizedGuard],
     },
     {
         path: 'courses/:id',
         loadChildren: () =>
             import('./features/course/course.module').then((m) => m.CourseModule),
+        canLoad: [AuthorizedGuard],
     },
     {
         path: 'courses',
         loadChildren: () =>
             import('./features/courses/courses.module').then((m) => m.CoursesModule),
+        canLoad: [AuthorizedGuard],
     },
 ];
 

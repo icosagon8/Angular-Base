@@ -16,3 +16,10 @@ export interface Course {
     authors: string[];
     id: string;
 }
+
+export interface User {
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+}

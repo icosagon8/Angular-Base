@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { httpInterceptorProviders } from './auth/interceptors';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule],
-    providers: [],
+    providers: [httpInterceptorProviders],
     bootstrap: [AppComponent],
 })
 export class AppModule {
