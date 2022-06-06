@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthorizedGuard } from './auth/guards/authorized.guard';
 import { NotAuthorizedGuard } from './auth/guards/not-authorized.guard';
+import { AdminGuard } from './user/guards/admin.guard';
 
 const routes: Routes = [
     {
@@ -31,6 +32,7 @@ const routes: Routes = [
                 (m) => m.CourseFormModule,
             ),
         canLoad: [AuthorizedGuard],
+        canActivate: [AdminGuard],
     },
     {
         path: 'courses/add',
@@ -39,6 +41,7 @@ const routes: Routes = [
                 (m) => m.CourseFormModule,
             ),
         canLoad: [AuthorizedGuard],
+        canActivate: [AdminGuard],
     },
     {
         path: 'courses/:id',
