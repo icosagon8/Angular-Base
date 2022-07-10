@@ -12,8 +12,12 @@ export class ConfirmationDialogComponent {
     @Input() okButtonText!: string;
     @Input() cancelButtonText!: string;
 
-    @Output() confirm = new EventEmitter<boolean>();
+    @Output() confirm = new EventEmitter();
     @Output() close = new EventEmitter();
+
+    onConfirm() {
+        this.confirm.emit();
+    }
 
     onClose() {
         this.close.emit();

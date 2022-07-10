@@ -21,9 +21,15 @@ export class AuthService {
         private http: HttpClient,
         private sessionStorageService: SessionStorageService,
         private router: Router,
-    ) {}
+    ) {
+        this.isLoggedIn();
+    }
 
-    public login(user: User): void {
+    private isLoggedIn(): void {
+        this.getToken() !== null && this.setIsAuthorized(true);
+    }
+
+    public login(user: Pick<User, 'email' | 'password'>): void {
         this.http
             .post<Response<string>>(`${environment.apiUrl}/login`, user)
             .pipe(

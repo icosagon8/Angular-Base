@@ -15,12 +15,14 @@ export class UserStoreService {
     private readonly isAdmin$$ = new BehaviorSubject<boolean>(false);
     public readonly isAdmin$: Observable<boolean> = this.isAdmin$$.asObservable();
 
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService) {
+        this.getUser();
+    }
 
     public getUser(): void {
         this.userService.getUser().subscribe((user) => {
             this.name$$.next(user.name);
-            this.isAdmin$$.next(user.role === UserRoles.admin);
+            this.isAdmin$$.next(user.role === UserRoles.Admin);
         });
     }
 }

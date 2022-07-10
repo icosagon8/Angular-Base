@@ -4,6 +4,7 @@ import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, finalize, map, tap } from 'rxjs/operators';
 import { Course } from 'src/app/shared/models/shared.models';
 
+import { AuthorsStoreService } from './authors-store.service';
 import { CoursesService } from './courses.service';
 
 @Injectable({
@@ -13,26 +14,25 @@ export class CoursesStoreService {
     private readonly isLoading$$ = new BehaviorSubject<boolean>(false);
     public readonly isLoading$: Observable<boolean> = this.isLoading$$.asObservable();
 
+    private readonly searchQuery$$ = new BehaviorSubject<string>('');
+    private readonly searchQuery$: Observable<string> = this.searchQuery$$.asObservable();
+
     private readonly courses$$ = new BehaviorSubject<Course[]>([]);
     public readonly courses$: Observable<Course[]> = this.getCourses();
 
-    private readonly searchQuery$$ = new BehaviorSubject<string>('');
-    private readonly searchQuery$: Observable<string> = this.searchQuery$$.pipe(
-        distinctUntilChanged(),
-    );
-
-    constructor(private coursesService: CoursesService) {
+    constructor(
+        private coursesService: CoursesService,
+        private authorsStoreService: AuthorsStoreService,
+    ) {
         this.getAll();
     }
 
     public createCourse(course: Course): Observable<Course> {
-        return this.coursesService
-            .createCourse(course)
-            .pipe(
-                tap((courseFromApi) =>
-                    this.setCoursesToState([...this.courses, courseFromApi]),
-                ),
-            );
+        return this.coursesService.createCourse(course).pipe(
+            tap((courseFromApi) => {
+                this.setCoursesToState([...this.courses, courseFromApi]);
+            }),
+        );
     }
 
     public getCourse(courseId: Course['id']): Observable<Course> {
@@ -51,10 +51,11 @@ export class CoursesStoreService {
             .pipe(tap(() => this.updateCourseInState(course)));
     }
 
-    public deleteCourse(courseId: Course['id']): Observable<string> {
-        return this.coursesService
+    public deleteCourse(courseId: Course['id']): void {
+        this.coursesService
             .deleteCourse(courseId)
-            .pipe(tap(() => this.removeCourseFromState(courseId)));
+            .pipe(tap(() => this.removeCourseFromState(courseId)))
+            .subscribe();
     }
 
     public setSearchQuery(searchQuery: string): void {

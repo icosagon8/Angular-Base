@@ -63,6 +63,8 @@
             text="Registration"
             [disabled]="!form.valid"
         ></button>
-        <p class="text">If you have an account you can <a href="#">Login</a></p>
+        <p class="text">
+            If you have an account you can <a [routerLink]="['/login']">Login</a>
+        </p>
     </form>
 </div>

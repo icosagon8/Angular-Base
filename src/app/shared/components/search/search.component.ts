@@ -14,8 +14,6 @@ export class SearchComponent {
     searchText = '';
 
     onSubmit(): void {
-        console.log(this.searchText);
-
         this.search.emit(this.searchText);
     }
 }

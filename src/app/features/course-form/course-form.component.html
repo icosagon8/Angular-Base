@@ -16,7 +16,7 @@
         <button
             common-button
             type="submit"
-            text="Create course"
+            [text]="courseId ? 'Update course' : 'Create course'"
             [disabled]="!courseform.valid"
         ></button>
     </div>

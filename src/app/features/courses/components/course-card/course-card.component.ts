@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { CourseModel } from '../../models/course.model';
+import { Course } from 'src/app/shared/models/shared.models';
 
 @Component({
     selector: 'app-course-card',
@@ -9,5 +9,5 @@ import { CourseModel } from '../../models/course.model';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseCardComponent {
-    @Input() course!: CourseModel;
+    @Input() course!: Course;
 }

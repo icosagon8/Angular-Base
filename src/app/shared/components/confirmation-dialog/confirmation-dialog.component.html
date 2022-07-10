@@ -8,7 +8,11 @@
         ></button>
         <app-info class="info" [title]="title" [text]="message">
             <div class="btn-container">
-                <button common-button [text]="okButtonText" (click)="onClose()"></button>
+                <button
+                    common-button
+                    [text]="okButtonText"
+                    (click)="onConfirm()"
+                ></button>
                 <button
                     common-button
                     [text]="cancelButtonText"

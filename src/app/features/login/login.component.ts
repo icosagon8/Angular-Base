@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { AuthService } from 'src/app/auth/services/auth.service';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -10,8 +12,10 @@ export class LoginComponent {
     emailPattern = '^(.+)@(.+)$';
     showPassword = false;
 
+    constructor(private authService: AuthService) {}
+
     onLogin(loginForm: NgForm): void {
-        console.log(loginForm.value);
+        this.authService.login(loginForm.value);
     }
 
     onToggle(passwordVisibility: any): void {

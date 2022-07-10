@@ -20,7 +20,7 @@ export class AnyWordCharacterValidatorDirective implements Validator {
 export function anyWordCharacterValidator(
     control: AbstractControl,
 ): ValidationErrors | null {
-    const regex = /^[^\W_]+$/i;
+    const regex = /^[\w-]+$/i;
     const anyWordCharacter = regex.test(control.value);
 
     return anyWordCharacter ? null : { forbiddenText: { value: control.value } };

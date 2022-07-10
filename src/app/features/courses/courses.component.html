@@ -1,6 +1,6 @@
 <app-header>
     <div class="account">
-        <span>Dave</span>
+        <span> {{ userStoreService.name$ | async }} </span>
         <button
             common-button
             class="btn-logout"
@@ -10,9 +10,17 @@
     </div>
 </app-header>
 
-<app-search class="search"></app-search>
+<app-search class="search" (search)="onSearch($event)"></app-search>
 
-<app-course-list [courses]="courses" [editable]="true"></app-course-list>
+<ng-container *ngIf="courses | async as courses">
+    <app-course-list
+        [courses]="courses"
+        [editable]="(userStoreService.isAdmin$ | async)!"
+        (removeCourse)="onRemoveCourse($event)"
+        (editCourse)="onEditCourse($event)"
+        (showCourse)="onShowCourse($event)"
+    ></app-course-list>
+</ng-container>
 
 <app-confirmation-dialog
     *ngIf="showModal"
@@ -20,5 +28,6 @@
     message="Are you sure you want to log out?"
     okButtonText="Yes"
     cancelButtonText="No"
-    (close)="closeModal()"
+    (close)="onClose()"
+    (confirm)="onConfirm()"
 ></app-confirmation-dialog>
