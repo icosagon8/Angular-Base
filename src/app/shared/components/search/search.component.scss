@@ -1,0 +1,17 @@
+@import "src/theme/core-variables";
+@import "src/theme/controls";
+
+.search-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+}
+
+.form-group {
+    min-height: auto;
+}
+
+.btn-submit {
+    width: 150px;
+}

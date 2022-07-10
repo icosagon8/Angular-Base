@@ -1,0 +1,29 @@
+@import "src/theme/core-variables";
+
+:host {
+    padding: 15px;
+    border: 1px solid $light_blue;
+    display: flex;
+    gap: 20px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.description {
+    flex: 2 0 0;
+}
+
+.info {
+    flex: 1 0 0;
+
+    span {
+        font-weight: bold;
+    }
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+}
