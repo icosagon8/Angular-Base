@@ -15,7 +15,7 @@ export class LoginComponent {
     constructor(private authService: AuthService) {}
 
     onLogin(loginForm: NgForm): void {
-        this.authService.login(loginForm.value);
+        this.authService.login(loginForm.value).subscribe();
     }
 
     onToggle(passwordVisibility: any): void {

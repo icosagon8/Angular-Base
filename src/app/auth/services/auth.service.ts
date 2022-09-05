@@ -29,18 +29,16 @@ export class AuthService {
         this.getToken() !== null && this.setIsAuthorized(true);
     }
 
-    public login(user: Pick<User, 'email' | 'password'>): void {
-        this.http
-            .post<Response<string>>(`${environment.apiUrl}/login`, user)
-            .pipe(
-                pluck('result'),
-                tap((token) => {
-                    this.sessionStorageService.setToken('token', token);
-                    this.router.navigate(['courses']);
-                }),
-                catchError(this.handleError),
-            )
-            .subscribe(() => this.setIsAuthorized(true));
+    public login(user: Pick<User, 'email' | 'password'>) {
+        return this.http.post<Response<string>>(`${environment.apiUrl}/login`, user).pipe(
+            pluck('result'),
+            tap((token) => {
+                this.sessionStorageService.setToken('token', token);
+                this.router.navigate(['courses']);
+                this.setIsAuthorized(true);
+            }),
+            catchError(this.handleError),
+        );
     }
 
     public logout(): void {
