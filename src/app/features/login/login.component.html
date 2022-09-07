@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<div class="form-wrapper">
+    <h1 class="title">Login</h1>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                autocomplete="off"
+                ngModel
+                #email="ngModel"
+                [appEmailValidator]="emailPattern"
+            />
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+                <div *ngIf="email.hasError('required')">Email is required.</div>
+                <div *ngIf="email.hasError('forbiddenEmail')">Invalid email address.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password">
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    required
+                    ngModel
+                    #password="ngModel"
+                    appShowPassword
+                    #passwordVisibility="appShowPassword"
+                />
+                <fa-icon
+                    class="password-icon"
+                    [icon]="showPassword ? 'eye-slash' : 'eye'"
+                    (click)="onToggle(passwordVisibility)"
+                ></fa-icon>
+            </div>
+            <div
+                *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="alert"
+            >
+                <div *ngIf="password.hasError('required')">Password is required.</div>
+            </div>
+        </div>
+        <button
+            class="btn-login"
+            common-button
+            type="submit"
+            [disabled]="!loginForm.valid"
+            text="Login"
+        ></button>
+        <p class="text">
+            If you don't have an account you can
+            <a [routerLink]="['/registration']">Registration</a>
+        </p>
+    </form>
+</div>
