@@ -4,7 +4,6 @@ import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { distinctUntilChanged, finalize, map, tap } from 'rxjs/operators';
 import { Course } from 'src/app/shared/models/shared.models';
 
-import { AuthorsStoreService } from './authors-store.service';
 import { CoursesService } from './courses.service';
 
 @Injectable({
@@ -20,10 +19,7 @@ export class CoursesStoreService {
     private readonly courses$$ = new BehaviorSubject<Course[]>([]);
     public readonly courses$: Observable<Course[]> = this.getCourses();
 
-    constructor(
-        private coursesService: CoursesService,
-        private authorsStoreService: AuthorsStoreService,
-    ) {
+    constructor(private coursesService: CoursesService) {
         this.getAll();
     }
 
